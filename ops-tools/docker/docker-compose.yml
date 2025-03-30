@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13.3
+    container_name: postgres
+    environment:
+      POSTGRES_DB: school
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: school
+    volumes:
+      - ../../data/postgres:/var/lib/postgresql/data
+      - ../../data/dump:/db-dump
+    ports:
+      - "5432:5432"
+    networks:
+      - docker-practice-net
+
+  redis:
+    image: redis:6
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - docker-practice-net
+
+networks:
+  docker-practice-net:
+    driver: bridge
