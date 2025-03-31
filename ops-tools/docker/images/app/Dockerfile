@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY ./target/docker-practice-java-0.0.1-SNAPSHOT.jar /app/app.jar
 
-EXPOSE 8080
+EXPOSE 8888
 
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-Dspring.profiles.active=docker", "-jar", "/app/app.jar"]
+
